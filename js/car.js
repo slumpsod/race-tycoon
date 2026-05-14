@@ -13,10 +13,11 @@ class Car {
     this.width = 8; // car pixel width
     
     // Lap tracking
-    this.laps = 0;
+    this.laps = options.laps || 0;
     this.lapStartTime = 0;
     this.lastLapTime = 0;
     this.currentLapProgress = 0; // 0 to 1
+    this._previousLaps = 0; // track completed laps for detection
     
     // Visual
     this.bobPhase = Math.random() * Math.PI * 2; // for slight wobble
@@ -35,9 +36,15 @@ class Car {
     const oldDistance = this.distance;
     this.distance += pixelsPerSecond * dt;
     
-    // Check for lap completion
-    if (this.distance - oldDistance >= track.length) {
-      this.completeLap(track);
+    // Check for lap completion - count how many track-length boundaries crossed
+    const completedLaps = Math.floor(this.distance / track.length);
+    const newLaps = completedLaps - this._previousLaps;
+    
+    if (newLaps > 0) {
+      for (let i = 0; i < newLaps; i++) {
+        this.completeLap(track, effectiveSpeed);
+      }
+      this._previousLaps = completedLaps;
     }
     
     // Update lap progress
@@ -50,10 +57,9 @@ class Car {
   /**
    * Called when a lap is completed
    */
-  completeLap(track) {
+  completeLap(track, effectiveSpeed) {
     this.laps++;
-    this.lastLapTime = (track.length) / (this.speed * 120); // approximate lap time
-    this.distance = this.distance % (track.length * 1000); // prevent overflow
+    this.lastLapTime = track.length / (effectiveSpeed * 120); // actual lap time
   }
 
   /**

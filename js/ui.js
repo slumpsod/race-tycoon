@@ -55,6 +55,29 @@ class UIManager {
     if (playerCar && playerCar.lastLapTime > 0) {
       document.getElementById('stat-lap-time').textContent = playerCar.lastLapTime.toFixed(1) + 's';
     }
+    
+    // Update buy button states
+    this.updateBuyButtons();
+  }
+
+  /**
+   * Update buy button enabled/disabled states
+   */
+  updateBuyButtons() {
+    const buttons = this.upgradesContainer.querySelectorAll('.upgrade-buy[data-id]');
+    const economy = this.game.economy;
+    
+    buttons.forEach(btn => {
+      const id = btn.dataset.id;
+      const cost = economy.getUpgradeCost(id);
+      const upgrade = economy.upgrades[id];
+      const isMaxed = upgrade.level >= upgrade.maxLevel;
+      
+      if (!isMaxed) {
+        btn.disabled = economy.money < cost;
+        btn.textContent = this.formatMoney(cost);
+      }
+    });
   }
 
   /**

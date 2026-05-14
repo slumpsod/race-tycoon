@@ -86,6 +86,8 @@ class SaveManager {
           car.distance = savedCar.distance || 0;
           car.speed = savedCar.speed || 1.0;
           car.laps = savedCar.laps || 0;
+          // Sync _previousLaps so lap detection works after load
+          car._previousLaps = Math.floor(car.distance / game.track.length);
         }
       }
     }

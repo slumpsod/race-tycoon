@@ -182,11 +182,11 @@ class Game {
         
         // Show lap overlay
         this.ui.showLapOverlay();
-        
-        // Refresh UI
-        this.ui.refresh();
       }
     }
+    
+    // Update stats every frame
+    this.ui.updateStats();
     
     // Auto-save every 30 seconds
     this.lastSaveTime += dt;
