@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Race Tycoon</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Stats Bar -->
+    <div id="stats-bar">
+      <div class="stat">
+        <span class="stat-label">Money</span>
+        <span class="stat-value" id="stat-money">$0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Viewers</span>
+        <span class="stat-value" id="stat-viewers">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">$/Lap</span>
+        <span class="stat-value" id="stat-per-lap">$0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Lap Time</span>
+        <span class="stat-value" id="stat-lap-time">--</span>
+      </div>
+    </div>
+
+    <!-- Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Upgrade Panel -->
+    <div id="upgrade-panel">
+      <div id="tab-bar">
+        <button class="tab active" data-tab="car">🏎️ Car</button>
+        <button class="tab" data-tab="venue">🏟️ Venue</button>
+        <button class="tab" data-tab="racers">🏁 Racers</button>
+      </div>
+      <div id="upgrades-container">
+        <!-- Upgrades injected here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/track.js"></script>
+  <script src="js/car.js"></script>
+  <script src="js/economy.js"></script>
+  <script src="js/save.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
