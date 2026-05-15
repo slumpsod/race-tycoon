@@ -1,34 +1,50 @@
 # 🏁 Race Tycoon
 
-A browser-based idle/tycoon game that mixes **Adventure Capitalist** mechanics with **2D top-down racing**.
+A browser-based idle/tycoon game that mixes **Adventure Capitalist** mechanics with **2D racing**.
 
 ## How It Works
 
-1. **Race** — Your car auto-races around an oval track (idle game style)
+1. **Race** — Your car auto-races around the track (idle game style)
 2. **Earn** — Viewers watch and pay per lap based on your lap time
 3. **Upgrade** — Spend earnings on:
-   - 🏎️ **Car upgrades** — Better tires, engine, turbo, nitrous, full rebuild (faster car = better lap times = more $/viewer)
+   - 🏎️ **Car upgrades** — Better tires, engine, turbo, nitrous, rebuild (faster auto-racer)
    - 🏟️ **Venue upgrades** — More seats, comfy seats, premium seats, VIP lounge, live stream (more viewers = more $)
-   - 🏁 **Rival racers** — Local hobbyist → Club racer → Pro → Celebrity → Rival team (more competition = more pay)
-4. **Repeat** — The cycle compounds: faster car → better times → more money → more upgrades
+   - 🏁 **Rival racers** — Local → Club → Pro → Celebrity → Rival team (more competition = more pay)
+4. **Drive** — Switch to manual mode and complete a lap yourself (WASD/keyboard or virtual joystick on mobile)
+5. **Unlock** — Max all upgrades + complete a manual lap → unlock the next track with a new car!
 
-## Income Formula
+## 3 Unique Tracks
 
-```
-Revenue per lap = Viewers × BasePay × SpeedMultiplier × SeatMultiplier × RacerMultiplier
-```
+| Track | Name | Car | Description |
+|-------|------|-----|-------------|
+| T1 | Rookie Oval | Stock Car | Classic oval to start your career |
+| T2 | Circuit Bend | Sport Car | Technical S-curves and chicanes |
+| T3 | Pro Speedway | Prototype | The ultimate professional circuit |
+
+## Controls
+
+- **Auto Mode:** Cars race automatically, upgrades boost speed
+- **Manual Mode:**
+  - Desktop: `WASD` or `Arrow Keys` (W=accelerate, S=brake, A=steer left, D=steer right)
+  - Mobile: Tap and drag on the canvas for virtual joystick control
+- **Wall collision:** Hitting track walls slows you down
 
 ## Features
 
-- **Idle gameplay** — Cars race automatically, money accumulates over time
-- **Offline earnings** — Earn money while away (50% efficiency, capped at 24 hours)
-- **Auto-save** — Progress saved every 30 seconds to localStorage
+- **3 unique tracks** with waypoint-based smooth paths
+- **3 car shapes** — Stock, Sport, Prototype (unlock as you progress)
+- **4-directional steering** — accelerate, brake, steer left/right
+- **Virtual joystick** for mobile touch controls
+- **Idle gameplay** — Cars race automatically when not driving
+- **Offline earnings** — Earn money while away (50% efficiency, 24hr cap)
+- **Auto-save** — Progress saved every 30 seconds
 - **Mobile-first** — Responsive design optimized for touchscreens
 - **No dependencies** — Pure vanilla HTML5 Canvas + JavaScript
 
 ## Tech Stack
 
 - HTML5 Canvas for rendering
+- Catmull-Rom spline interpolation for smooth tracks
 - Vanilla JavaScript (no frameworks)
 - CSS Grid/Flexbox for responsive layout
 - localStorage for persistence
@@ -42,35 +58,6 @@ cd race-tycoon
 python3 -m http.server 8081
 # Open http://localhost:8081
 ```
-
-## Upgrade Trees
-
-### Car (Speed)
-| Upgrade | Effect | Levels |
-|---------|--------|--------|
-| Better Tires | +5% speed per level | 10 |
-| Engine Tune | +8% speed per level | 10 |
-| Turbocharger | +15% speed per level | 5 |
-| Nitrous System | +20% speed per level | 5 |
-| Full Rebuild | +30% speed per level | 3 |
-
-### Venue (Viewers & Pay)
-| Upgrade | Effect | Levels |
-|---------|--------|--------|
-| More Seats | +10 viewers per level | 10 |
-| Comfortable Seats | +15% pay/viewer | 5 |
-| Premium Seats | +25% pay/viewer | 5 |
-| VIP Lounge | +50% pay/viewer | 3 |
-| Live Stream | +30 viewers, +10% pay | 3 |
-
-### Racers (Competition Bonus)
-| Racer | Pay Bonus | One-time |
-|-------|-----------|----------|
-| Local Hobbyist | +15% | ✓ |
-| Club Racer | +30% | ✓ |
-| Pro Driver | +50% | ✓ |
-| Celebrity Racer | +100% | ✓ |
-| Rival Team | +200% | ✓ |
 
 ## License
 

@@ -11,6 +11,10 @@
     <!-- Stats Bar -->
     <div id="stats-bar">
       <div class="stat">
+        <span class="stat-label">Track</span>
+        <span class="stat-value" id="stat-track">T1</span>
+      </div>
+      <div class="stat">
         <span class="stat-label">Money</span>
         <span class="stat-value" id="stat-money">$0</span>
       </div>
@@ -23,13 +27,19 @@
         <span class="stat-value" id="stat-per-lap">$0</span>
       </div>
       <div class="stat">
-        <span class="stat-label">Lap Time</span>
-        <span class="stat-value" id="stat-lap-time">--</span>
+        <span class="stat-label">Best</span>
+        <span class="stat-value" id="stat-best-time">--</span>
       </div>
     </div>
 
     <!-- Canvas -->
     <canvas id="game-canvas"></canvas>
+
+    <!-- Mode Toggle -->
+    <button id="mode-toggle" class="mode-toggle-btn">🏎️ Drive</button>
+
+    <!-- Track Unlock Button -->
+    <button id="unlock-track-btn" class="unlock-btn" style="display:none;">🏁 Next Track</button>
 
     <!-- Upgrade Panel -->
     <div id="upgrade-panel">

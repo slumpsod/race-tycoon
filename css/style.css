@@ -43,7 +43,7 @@ html, body {
 /* Stats Bar */
 #stats-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 4px;
   padding: 8px 8px 4px;
   background: var(--bg-panel);
@@ -74,6 +74,11 @@ html, body {
   color: var(--success);
 }
 
+#stat-track {
+  color: var(--accent);
+  font-size: 13px;
+}
+
 /* Canvas */
 #game-canvas {
   flex: 1;
@@ -81,6 +86,71 @@ html, body {
   display: block;
   background: var(--track-green);
   touch-action: none;
+  position: relative;
+}
+
+/* Mode Toggle Button */
+.mode-toggle-btn {
+  position: absolute;
+  top: 56px;
+  right: 8px;
+  z-index: 60;
+  padding: 6px 12px;
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.mode-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.mode-toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Track Unlock Button */
+.unlock-btn {
+  position: absolute;
+  top: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--gold), #f39c12);
+  border: 2px solid #f9ed69;
+  border-radius: 20px;
+  color: #1a1a2e;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  touch-action: manipulation;
+  animation: pulse 2s infinite;
+}
+
+.unlock-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.unlock-btn:disabled {
+  background: #555;
+  border-color: #666;
+  color: #999;
+  animation: none;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 237, 105, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(249, 237, 105, 0); }
 }
 
 /* Upgrade Panel */
@@ -238,6 +308,9 @@ html, body {
   text-shadow: 0 0 20px rgba(249, 237, 105, 0.6);
   opacity: 0;
   z-index: 50;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.4;
 }
 
 #lap-overlay.show {
@@ -248,6 +321,32 @@ html, body {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
   20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1) translateY(-40px); }
+}
+
+/* Notification toast */
+#notification {
+  position: absolute;
+  bottom: 46vh;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(22, 33, 62, 0.95);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  max-width: 90%;
+  opacity: 0;
+  z-index: 200;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+#notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Scrollbar styling */
